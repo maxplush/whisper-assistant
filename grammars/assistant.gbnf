@@ -32,10 +32,11 @@ prompt ::= init
 # leading space is very important!
 init ::= " Ok Whisper, start listening for commands."
 
+# extend the 'command' rule to include the new "kill all" command 
 command ::= "Turn " ("on" | "off") " " device | "Set " device " to " value |
             "Increase " device " by " value | "Decrease " device " by " value |
             "Play " media | "Stop " media | "Schedule " task " at " time | "Cancel " task |
-            "Remind me to " task " at " time | "Show me " device | "Hide " device
+            "Remind me to " task " at " time | "Show me " device | "Hide " device | "Kill all " things  # <-- New kill all command
 
 question ::= "What is the " device " status?" | "What is the current " device " value?" |
              "What is the " device " temperature?" | "What is the " device " humidity?" |
@@ -55,3 +56,7 @@ media ::= "music" | "radio" | "podcast" | "audiobook" | "TV show" | "movie"
 task ::= [a-zA-Z]+ (" " [a-zA-Z]+)?
 
 time ::= [0-9] [0-9]? ("am" | "pm")?
+
+# New `things` rule for kill command options
+
+things ::= "humans" | "animals" | "lifeforms" | "robots"
